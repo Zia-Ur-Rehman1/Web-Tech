@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container col-10 offset-1">
+    <h2 id="result" > Enter Result</h2>
+    <input type="text" id="input1" placeholder="Enter Value" autofocus class="form-control col-xs-3" />
+    <input type="text" id="input2" placeholder="Enter Value" autofocus class="form-control col-xs-3" />
+    <div class="alert alert-danger" role="alert" id="error">
+        <strong>Error!</strong>
+    </div>
+    <button type="button" id="submit" class="btn btn-primary ">Submit</button>
+    
+</div>
+
+
+
+        <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+<script>
+    $(document).ready(function(){
+    $('#error').hide();
+    $('#submit').click(function(){
+        if($('#input1').val()==='' || $('#input2').val()==='' ){
+        $('#error').show();
+        $('#result').text("Empty String");
+        }else{
+        $('#error').hide();
+        value1=parseInt($('#input1').val());
+        value2=parseInt($('#input2').val());
+        if($.isNumeric($('#input1').val())===false || $.isNumeric($('#input2').val())===false){
+            $('#result').text("Give Input In Numbers");
+            $('#error').text("Give Input In Numbers");
+            $('#error').show(); 
+        }
+        else
+            $('#result').text(value1+value2);
+        }
+    });
+});
+</script>
+</html>

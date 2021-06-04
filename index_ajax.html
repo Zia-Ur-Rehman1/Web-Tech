@@ -1,0 +1,96 @@
+<!-- Zia Ur Rehman 1802034 -->
+<html>
+   <head>
+      <title>Ajax jQuery </title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   </head>
+   <body>
+      <h1 id="messgae" class='"d-inline-flex bg-info rounded' style='display: inline-flex;'> Loading......</h1>
+      <table class="table" id="country_table">
+         <thead>
+            <tr>
+               <th scope="col">#</th>
+               <th scope="col">Name</th>
+               <th scope="col">Flag</th>
+            </tr>
+         </thead>
+         <tbody>
+            
+         </tbody>
+      </table>
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   </body>
+   <script>
+      $('#country_table').hide()
+      $.ajax({
+         url: 'https://restcountries.eu/rest/v2/all',
+         success: function (response) {
+         alert("Name: Zia Ur Rehman \nRoll No: 1802034\nThreshold is 27657145");
+         countries = response;
+         var unique_region=new Array();
+         for (index in countries){
+            name = countries[index]['name'];
+            flag = countries[index]['flag'];
+            region = countries[index]['region'];
+            if(unique_region.indexOf(region)===-1)  unique_region.push(region);
+            
+            if (countries[index]['region'] === unique_region[0]){
+               indexColumn = '<th scope="row" class="bg-primary text-light" >'+index+'</th>';
+            };
+
+            if( countries[index]['region'] ===  unique_region[1] ){
+               indexColumn = '<th scope="row" class="bg-dark text-light">'+index+'</th>';
+            };
+            
+            if(countries[index]['region'] ===  unique_region[2]){
+               indexColumn = '<th scope="row" class="bg-warning text-light">'+index+'</th>';
+            };
+            if(countries[index]['region'] === unique_region[3]){
+               indexColumn = '<th scope="row" class="bg-success text-light" >'+index+'</th>';
+            };
+            
+            if(countries[index]['region'] === unique_region[4]){
+               indexColumn = '<th scope="row" class="bg-info text-light">'+index+'</th>';
+            };
+            if(countries[index]['region'] ===  unique_region[5]){
+               indexColumn = '<th scope="row" class="bg-light text-dark">'+index+'</th>';
+            };
+
+            if (countries[index]['region'] === unique_region[6]){
+               indexColumn = '<th scope="row" class="bg-secondary text-light">'+index+'</th>';
+            };
+            
+            
+            var rowColor = 'img-rounded bg-dark';
+            // Threshold is 27657145
+            var threshold = 27657145;
+            if ( parseInt( countries[index]['population'] ) >= threshold){
+               rowColor = 'class="img-rounded text-light "'+'style="background-color:#d80000"';
+            }
+            else
+               rowColor = 'class="img-rounded bg-light"';
+
+            $('#messgae').hide();
+            var row = '<tr ' 
+            + rowColor   + '>' 
+            +indexColumn +
+               '<td>'+name+ '</td>' + 
+               '<td><img src="'+flag+'"  width="50" height="50"> </td></tr>';
+               $('#country_table tbody').append(row);
+               $('#country_table').show();
+            
+         }
+         
+      },
+      error: function (error) {
+         console.log(error);
+      },
+   })
+
+   </script>
+</html>

@@ -1,0 +1,42 @@
+<html>
+    <head>
+       <title>Assignment 02</title>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+       <div class="container">
+        <div>
+            <h2>Todo List</h2>
+            <ul id="todo_List"></ul>   
+        </div>
+            <ul class="pager">
+          <input type="text" id="todo_item" placeholder="Enter Todo" class="form-control">
+          <div class="alert alert-danger" id="error">
+            <strong>Error!</strong>  Please Enter Value
+          </div>
+          <br>
+          <button type="button" class="btn btn-primary btn" onclick="getValue()">Add Item</button>
+       </ul>
+    </body>
+    <script>
+        document.getElementById('error').style.display = "none"
+       function getValue() {
+        todoValue = document.getElementById('todo_item').value
+          if(todoValue === "")
+          {
+            document.getElementById('error').style.display = "block"
+          }
+          else
+          {
+            var data = document.createElement('LI');
+            var GetValue = document.getElementById("todo_item").value;
+            var Entry = document.createTextNode(GetValue);
+            data.appendChild(Entry);
+            document.getElementById("todo_List").appendChild(data);
+            document.getElementById('todo_item').value = "" ;  
+          }     
+       }
+    </script>
+ </html>

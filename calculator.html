@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="container ">
+        <div class="row col-12 offset-5 ">
+            <div class="col col-sm-3 col-lg-3">
+                <h1 class="  text-primary   text-center"><strong>Calculator</strong></h1>
+                <input type="text"  class=" form-control " style="margin-bottom: 1rem;"  placeholder="Enter Value" id="val_1">
+                <input type="text"  class="form-control  "  placeholder="Ener Value" id="val_2">
+
+                <h3><label class="text-primary  ">Choose Operation</label></h3>
+
+                <button type="button" class="btn btn-primary btn    " onclick="addvalues()">Add</button>
+                <button type="button" class="btn btn-warning btn" onclick="subvalues()">Sub</button>
+                <button type="button" class="btn btn-danger btn" onclick="mulvalues()">Mul</button>
+                <button type="button" class="btn btn-success btn" onclick="divvalues()">Div</button>
+                <br>
+                <label class="text-danger"> Result</label><br>
+                <input type="text"  class="form-control  "  placeholder="Result Value" id="result">
+
+            </div>
+            
+    </div>
+    <div class="row col-3 offset-5 bg-dark text-white mt-4 rounded" >
+        <center>
+        <footer class='footer  '>
+            <p ><strong>Zia Ur Rehman<br> Roll No:1802034<br> Department:Computer Science<br>
+           zia2018@namal.edu.pk</strong></p>
+          </footer>
+        </center>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+<script>
+    function addvalues(){
+        var val_1 =parseFloat(document.getElementById("val_1").value);
+        var val_2 =parseFloat(document.getElementById("val_2").value);
+        console.log(val_1,val_2);
+        result =parseFloat(val_2+val_1);
+        document.getElementById("result").value=result;
+    }
+    function subvalues(){
+        var val_1 =parseFloat(document.getElementById("val_1").value);
+        var val_2 =parseFloat(document.getElementById("val_2").value);
+        console.log(val_1,val_2);
+        var result =parseFloat(val_2-val_1);
+        document.getElementById("result").value=result;
+    }
+    function mulvalues(){
+        var val_1 =parseFloat(document.getElementById("val_1").value);
+        var val_2 =parseFloat(document.getElementById("val_2").value);
+        console.log(val_1,val_2);
+        var result =parseFloat(val_2*val_1);
+        document.getElementById("result").value=result;
+    }
+    function divvalues(){
+        var val_1 =parseFloat(document.getElementById("val_1").value);
+        var val_2 =parseFloat(document.getElementById("val_2").value);
+        console.log(val_1,val_2);
+        var result =parseFloat(val_2/val_1);
+        document.getElementById("result").value=result;
+    }
+</script>
+</html>

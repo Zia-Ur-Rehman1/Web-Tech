@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <img src="" class="img-thumbnail" id="slider" alt="Cinque Terre">
+    </div>
+    <ul class="pager text-center m-3 ">
+        <button type="button" class="btn btn-primary" onclick="slide_back()">Previous</button>
+        <button type="button" class="btn btn-primary btn" onclick="slide_for()">Next</button>
+    </ul>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+<script>
+    var images = [
+        'https://www.w3schools.com/w3images/coffee.jpg',
+        'https://www.w3schools.com/w3images/workbench.jpg',
+        'https://www.w3schools.com/w3images/sound.jpg'
+    ]
+    counter = 0;
+
+    document.getElementById("slider").src = images[counter];
+
+    function slide_for() {
+        counter = (counter + 1) % images.length;
+        document.getElementById("slider").src = images[counter];
+    }
+    function slide_back() {
+        counter = (counter > 0) ? counter - 1 : images.length - 1;
+        document.getElementById("slider").src = images[counter];
+    }
+</script>
+
+</html>

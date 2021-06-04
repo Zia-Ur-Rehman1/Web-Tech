@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<body>
+    <div class="container">
+    <h2 class="text-center text-primary ">Todo List</h2>
+        <ul class="list-group text" id="todolist">
+            <div class="alert alert-warning " role="alert" id="warning">
+                <strong>List Is Empty</strong>
+            </div>
+        </ul>
+    </div>
+    <ul class="pager text-center ">
+        <input type="text" class="form-control mt-3" id="user" placeholder="Enter here">
+        <div class="alert alert-danger" role="alert" id="error">
+            <strong>Error!</strong>
+        </div>
+        <button class="btn btn-primary btn  mt-3" type="button" id="value" onclick="getValue()">Add Item</button>
+    </ul>
+     <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+<script type="text/javascript">
+        document.getElementById("error").style.display="none";
+        check= document.getElementById("todolist").innerHTML.trim() == ""
+        if(check ===true){
+            document.getElementById("warning").style.display="block";
+
+        }
+       else{
+    function getValue(){
+        document.getElementById("error").style.display="none";
+        todoValue=document.getElementById("user").value;
+        if(todoValue === "")
+        document.getElementById("error").style.display="block";
+        else
+        {
+        document.getElementById("warning").style.display="none";
+        // Create cross at end
+            span=document.createElement("span");
+            span.className+="close";
+            span.appendChild(document.createTextNode("x"));
+        // Create list item    
+            ul = document.getElementById("todolist");
+            li=document.createElement("li");
+            console.log(span);
+            li.className += "list-group-item";
+            console.log(li);
+            li.appendChild(document.createTextNode(todoValue));
+        //append list in ul
+        //append span in list
+            li.appendChild(span);
+            ul.appendChild(li);
+        //make the input field empty
+            document.getElementById('user').value = "";
+        //close the list item
+            var closebtns = document.getElementsByClassName("close");
+            var i;
+            for (i = 0; i < closebtns.length; i++) {
+            closebtns[i].addEventListener("click", function() {
+            this.parentElement.style.display = 'none';
+                });
+            }
+
+        }
+    }
+}
+</script>
+</html>

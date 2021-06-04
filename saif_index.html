@@ -1,0 +1,108 @@
+<html>
+   <head>
+      <title>Country Example</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   </head>
+   <body>
+      <h1 id="messgae">Please wait</h1>
+      <table class="table" id="country_table">
+         <thead>
+            <tr>
+               <th scope="col">#</th>
+               <th scope="col">Name</th>
+               <th scope="col">Flag</th>
+            </tr>
+         </thead>
+         <tbody>
+            
+         </tbody>
+      </table>
+      <script src="http://underscorejs.org/underscore-min.js"></script>
+   </body>
+
+   <script>
+   $('#country_table').hide()
+
+   $.ajax({
+      url: 'https://restcountries.eu/rest/v2/all',
+      success: function (response) {
+         countries = response;
+         for (index in countries){
+            name = countries[index]['name'];
+            flag = countries[index]['flag'];
+            $('#messgae').hide();
+            
+            var indexColumn = '<th scope="row" class="bg-danger text-light>'+index+'</th>';
+
+            if (countries[index]['region'] === "Asia"){
+               indexColumn = '<th scope="row" class="bg-primary text-light" >'+index+'</th>';
+            };
+
+            if( countries[index]['region'] === "Europe" ){
+               indexColumn = '<th scope="row" class="bg-dark text-light">'+index+'</th>';
+            };
+            
+            if(countries[index]['region'] === "Africa"){
+               indexColumn = '<th scope="row" class="bg-warning text-light">'+index+'</th>';
+            };
+            if(countries[index]['region'] === "Oceania"){
+               indexColumn = '<th scope="row" class="bg-success text-light" >'+index+'</th>';
+            };
+            
+            if(countries[index]['region'] === "Americas"){
+               indexColumn = '<th scope="row" class="bg-info text-light">'+index+'</th>';
+            };
+            if(countries[index]['region'] === ''){
+               indexColumn = '<th scope="row" class="bg-light text-dark">'+index+'</th>';
+            };
+
+            if (countries[index]['region'] === "Polar"){
+               indexColumn = '<th scope="row" class="bg-secondary text-light">'+index+'</th>';
+            };
+            
+            
+            
+            var rowColor = 'img-rounded bg-dark';
+            //Countries having population greater than 25000000 will be marked as RED
+            var thresouldDanger = 25000000;
+            //Countries having population greater than 20000000 will be marked as YELLOW
+            var thresouldWarning = 22000000;
+            //Normal population will not be marked
+            var thresouldNormal = 21999999;
+
+            if ( parseInt( countries[index]['population'] ) >= thresouldWarning){
+               rowColor = 'class="img-rounded bg-warning"';
+               
+            };
+
+            if ( parseInt( countries[index]['population'] ) >= thresouldDanger){
+               rowColor = 'class="img-rounded bg-danger"';
+               console.log("Danger")
+            };
+
+            if ( parseInt( countries[index]['population'] ) <= thresouldNormal){
+               rowColor = 'class="img-rounded bg-light"';
+            };
+            
+
+            var row = '<tr ' + rowColor   + '>' +
+               indexColumn +
+               '<td>'+name+ '</td>' + 
+               '<td><img src="'+flag+'"  width="50" height="50"> </td></tr>';
+               $('#country_table tbody').append(row);
+               $('#country_table').show();
+            
+         }
+         
+      },
+      error: function (error) {
+         console.log(error);
+      },
+   })
+
+   </script>
+</html>
