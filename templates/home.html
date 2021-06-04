@@ -20,19 +20,21 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid d-flex justify-content-between">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Login Example</a>
+    <nav class="nav nav-pills justify-content-between bg-dark">
+            <ul class="navbar-nav mr-auto ml-4">
+               <li class="nav-item">
+            <h4><a class="p-2 nav-link active" href="#"> <span class="glyphicon glyphicon-home"></span> Home</a></h4>
+            </ul>
+            <div class="mx-auto order-0">
+                <a class="navbar-brand mx-auto" href="#">{{name}}</a>
             </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/home">{{name}}</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-            </ul>
-        </div>
+            <ul class="nav navbar-nav mx-auto  ">
+            <h4><li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li></h4>
+        </ul> 
     </nav>
+
+
+
 
 <div class="container">        
   <table class="table">
