@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Homepage</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  {% with messages = get_flashed_messages() %}
+  {% if messages  %}
+  <script type="text/javascript">
+      var msg= '{{messages}}';
+        msg=msg.slice(6,-6);
+      alert(msg);
+    </script> 
+  {% endif %}
+{% endwith %}
+
+</head>
+<body>
+    <nav class="nav nav-pills justify-content-between bg-dark">
+            <ul class="navbar-nav   ml-4">
+               <li class="nav-item">
+            <h4><a class="p-2 nav-link active" href="#"> <span class="glyphicon glyphicon-home"></span> Home</a></h4>
+            </ul>
+            <ul class="navbar-nav  ml-2 mr-auto">
+              <li class="nav-item">
+           <h4><a class="p-2 nav-link" href="/student"> <span class="glyphicon "></span>Student</a></h4>
+           </ul>
+           
+            <div class="mx-auto ">
+                <a class="navbar-brand mx-auto   " href="#">Admin Acess</a>
+            </div>
+            <ul class="nav navbar-nav mx-auto ">
+            <h4><li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li></h4>
+        </ul> 
+    </nav>
+    <div class="alert alert-success text-center" role="alert">
+      <h1>Congratulation you are logged in</h1>
+    </div>
+
+
+
+</body>
+</html>

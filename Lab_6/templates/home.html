@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Table Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <script type="text/javascript">
+      var msg= '{{messages}}';
+        msg=msg.slice(6,-6);
+      alert(msg);
+    </script> 
+  {% endif %}
+{% endwith %}
+
+</head>
+<body>
+    <nav class="nav nav-pills justify-content-between bg-dark">
+            <ul class="navbar-nav mr-auto ml-4">
+               <li class="nav-item">
+            <h4><a class="p-2 nav-link active" href="#"> <span class="glyphicon glyphicon-home"></span> Home</a></h4>
+            </ul>
+            <div class="mx-auto order-0">
+                <a class="navbar-brand mx-auto" href="#">{{name}}</a>
+            </div>
+            <ul class="nav navbar-nav mx-auto  ">
+            <h4><li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li></h4>
+        </ul> 
+    </nav>
+
+
+
+
+<div class="container">        
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for row in data.data %}
+            <tr>
+                <td>{{row.id}}</td>
+                <td>{{row.email}}</td>
+                <td>{{row.first_name}}</td>
+                <td>{{row.last_name}}</td>
+                <td><a onclick="window.open('{{row.avatar}}')"><img src={{row.avatar}} width="50px" height="50px"></a></td>
+            </tr>
+        {% endfor %}
+      <tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
